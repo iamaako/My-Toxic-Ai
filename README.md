@@ -1,85 +1,80 @@
-# My Toxic AI 💔
-
 <div align="center">
-  <img src="frontend/public/characters/ss1.png" alt="My Toxic AI Banner" width="800">
+  <h1>🚨 My Toxic AI 💔</h1>
+  <p><i>Choose your flavor of technological disappointment.</i></p>
+  <p>
+    <b>Team: Lone Wolf</b> | 
+    <a href="https://my-toxic-ai.netlify.app">🔗 Live Demo</a>
+  </p>
+  
+  <br/>
+
+  <!-- Pyramid layout for screenshots -->
+  <img src="frontend/public/characters/ss1.png" alt="My Toxic AI Banner" width="800" style="border-radius: 8px; border: 4px solid black; margin-bottom: 10px;">
+  <br/>
+  <img src="frontend/public/characters/ss2.png" alt="Character Selection" width="395" style="border-radius: 8px; border: 4px solid black;">
+  <img src="frontend/public/characters/ss3.png" alt="Chat Interface" width="395" style="border-radius: 8px; border: 4px solid black;">
 </div>
-
-### Team: Lone Wolf
-🔗 **Live Demo:** [https://my-toxic-ai.netlify.app](https://my-toxic-ai.netlify.app)
-
-Welcome to the most unhelpful, stressful, and chaotic AI companion app you'll ever use. **My Toxic AI** was built for the Garage Inference Hackathon to answer one question: *What if we stopped trying to fix the hardware limitations of small, weak local models and instead weaponized them into personality traits?*
-
----
-
-## 🛠️ Turning Bugs Into Features (The Idea)
-
-Running extremely weak, low-memory local LLMs natively comes with severe limitations: small context windows, massive hallucinations, rigid mode collapse, and literal interpretation. We mapped these exact "flaws" to popular Anime Tropes to create toxic virtual partners where the bugs *are* the feature.
-
-| Persona | Anime Character | Why It Fits? (The Trope) | The Real Weakness Mocked | Model Used |
-| :--- | :--- | :--- | :--- | :--- |
-| **The Forgetful Space-Cadet** | **Kanna** | Constantly forgets what you just said and gaslights you into thinking you never said it. | Low Context Window (Amnesia) | `Qwen 3 0.6B` |
-| **The Chuunibyou (Delulu)** | **Rikka** | Makes up wildly exaggerated, impossible magical stories. Completely detached from reality. | High Hallucination Rate | `Gemma 3 1B` |
-| **The Glitchy Genius** | **Shiro** | Zero emotions. Responds to flirting with strict JSON errors or mathematical calculations. | Over-indexed on Logic/Code | `Phi-4 Mini` |
-| **The Obsessed Yandere** | **Yuno** | Fixates on one weird topic (like locking you up) and repeatedly brings it up no matter what. | Degeneration / Repetition Loops | `DeepSeek-Coder 1.5B` |
-| **The Bipolar Tsundere** | **Taiga** | Drastically swings from extremely angry to overly affectionate in the same breath. | Mode Collapse (Persona Drifting) | `SmolLM 135M` |
-| **The Strict Disciplinarian** | **Erza** | Takes offense to normal words. Treats everything as a personal attack or rule violation. | Alignment Tax (Over-refusal) | `Mistral 3B` |
 
 <br/>
 
-<div align="center">
-  <img src="frontend/public/characters/ss2.png" alt="Character Selection" width="800">
-</div>
-
 ---
 
-## 🚀 Features
+## 🧠 The Idea: Turning Bugs into Features
 
-- **Neo-Brutalist UI:** A stunning, chaotic, high-contrast design using Tailwind CSS. Thick borders, hard offset shadows, and aggressive colors.
-- **3D Interactive Cards:** Characters pop out of their cards with a smooth 3D CSS flip-effect on hover.
-- **Persistent Toxicity:** Conversations are saved locally. You cannot escape their toxicity unless you press the aggressive `WIPE MEMORY` button.
-- **Dual Language Support:** Characters fluidly switch between English and *Hinglish* (Hindi in English script) depending on your input—delivering highly localized, authentic Indian girlfriend vibes.
-- **Local Inference:** Fully private, offline inference powered by FastAPI and Ollama.
+Running extremely weak, low-memory local LLMs on consumer hardware natively comes with severe limitations: **small context windows, massive hallucinations, rigid mode collapse, and literal interpretation.** 
 
-<br/>
+Instead of trying to "fix" these hardware-based flaws with complex engineering, we asked a simple question: *What if we weaponized these flaws into personality traits?*
 
-<div align="center">
-  <img src="frontend/public/characters/ss3.png" alt="Chat Interface" width="800">
-</div>
+We mapped these exact ML weaknesses to popular Anime Tropes to create toxic, unstable virtual partners. **The bugs *are* the feature.** If a model has a terrible context window, it's not a bad AI—it's a girlfriend with 5-second amnesia who gaslights you. If a model hallucinates wildly, it's a delusional *Chuunibyou* who thinks she owns a private space station.
 
----
+### 🛠️ How We Built It & The Tech Stack
 
-## 📸 Meet the Cast
-
-| <img src="frontend/public/characters/goldfish.png" width="100"> | <img src="frontend/public/characters/delulu.png" width="100"> | <img src="frontend/public/characters/robot.png" width="100"> | <img src="frontend/public/characters/yandere.png" width="100"> | <img src="frontend/public/characters/tsundere.png" width="100"> | <img src="frontend/public/characters/karen.png" width="100"> |
-|:---:|:---:|:---:|:---:|:---:|:---:|
-| **Kanna**<br/>*(Goldfish)* | **Rikka**<br/>*(Delulu)* | **Shiro**<br/>*(Robot)* | **Yuno**<br/>*(Yandere)* | **Taiga**<br/>*(Tsundere)* | **Erza**<br/>*(Karen)* |
-
----
-
-## 💻 Tech Stack
-
-- **Frontend:** Next.js 15 (App Router), React, Tailwind CSS
+- **Frontend:** Next.js 15 (App Router), React, Tailwind CSS (Neo-Brutalist Design)
 - **Backend:** Python, FastAPI, HTTPX
-- **Inference:** Ollama (Local Server)
-- **Deployment:** DigitalOcean Ubuntu Droplet
+- **Inference Engine:** Ollama running small, specialized local models
+- **Language Support:** Strict dynamic prompt injection ensures the characters understand English but reply aggressively in either **English** or **Hinglish** (Hindi written in English script), giving an authentic WhatsApp texting vibe.
 
-## ⚙️ How to Run Locally
+### ☁️ Why DigitalOcean Droplet?
+We deployed our local Ollama inference server on a **DigitalOcean Droplet** for one specific reason: **Zero Friction for Judges.**
+We didn't want the judges to waste time downloading Ollama, pulling 6 different models, and setting up Python environments just to test our idea. By hosting the inference on a Droplet and the frontend on Netlify, judges can instantly experience our concept with just a single click.
+
+---
+
+## 📸 Meet The Toxic Cast
+
+| Photo | Character Name | Claimed Model | The Flaw / Specialty (Khasiyat) |
+| :---: | :--- | :--- | :--- |
+| <img src="frontend/public/characters/goldfish.png" width="120" style="border:2px solid black;"> | **Kanna**<br/>*(The Forgetful Space-Cadet)* | `Qwen 3 0.6B` | **Low Context Window:** Forgets who you are every 2 minutes and treats you like a creepy stalker who randomly texted her. |
+| <img src="frontend/public/characters/delulu.png" width="120" style="border:2px solid black;"> | **Rikka**<br/>*(The Chuunibyou)* | `Gemma 3 1B` | **High Hallucination Rate:** Constantly lies and makes up wildly exaggerated stories about her massive wealth and power. |
+| <img src="frontend/public/characters/robot.png" width="120" style="border:2px solid black;"> | **Shiro**<br/>*(The Glitchy Genius)* | `Phi-4 Mini` | **Over-indexed on Logic:** Zero emotions. Analyzes flirting using strict physics, thermodynamics, and cellular biology. |
+| <img src="frontend/public/characters/yandere.png" width="120" style="border:2px solid black;"> | **Yuno**<br/>*(The Obsessed Yandere)* | `DeepSeek-Coder 1.5B` | **Repetition Loops:** Fixates obsessively on tracking your location and repeatedly brings it up no matter the topic. |
+| <img src="frontend/public/characters/tsundere.png" width="120" style="border:2px solid black;"> | **Taiga**<br/>*(The Bipolar Tsundere)* | `SmolLM 135M` | **Mode Collapse:** Experiences violent mood swings, going from extremely insulting to overly affectionate in a single text. |
+| <img src="frontend/public/characters/karen.png" width="120" style="border:2px solid black;"> | **Erza**<br/>*(The Disciplinarian)* | `Mistral 3B` | **Alignment Tax:** Takes extreme offense to normal, everyday words and constantly demands apologies. |
+
+---
+
+## ⚙️ How to Run Locally (For Nerds)
+
+If you *really* want to run this locally on your own machine instead of using our live server:
 
 ### 1. Prerequisites
 - Install [Node.js](https://nodejs.org/) (v18+)
 - Install [Python 3.10+](https://www.python.org/)
 - Install [Ollama](https://ollama.com/)
 
-### 2. Start the Backend
+### 2. Start the Backend API
 ```bash
 cd backend
 python -m venv venv
-source venv/bin/activate  # On Windows use: venv\Scripts\activate
+source venv/bin/activate  # On Windows: venv\Scripts\activate
 pip install -r requirements.txt
+# (Make sure Ollama is running in the background)
 uvicorn main:app --host 0.0.0.0 --port 8000
 ```
 
-### 3. Start the Frontend
+### 3. Connect the Frontend
+You will need to open `frontend/app/chat/[id]/page.tsx` and change the fetch URL from our Droplet IP back to `http://localhost:8000/api/chat`.
+
 ```bash
 cd frontend
 npm install
