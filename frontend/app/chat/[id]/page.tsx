@@ -32,10 +32,28 @@ export default function ChatPage({ params }: { params: Promise<{ id: string }> }
   };
 
   useEffect(() => {
-    const saved = localStorage.getItem(`chat_${id}`);
-    if (saved) {
-      try { setMessages(JSON.parse(saved)); } catch (e) {}
-    }
+    const loadData = () => {
+      const saved = localStorage.getItem(`chat_${id}`);
+      if (saved) {
+        try { 
+          const parsed = JSON.parse(saved);
+          // Prevent unnecessary state updates if data hasn't changed
+          setMessages((prev) => JSON.stringify(prev) !== saved ? parsed : prev);
+          
+          // If the last message is from the user, the AI is still typing in the background
+          if (parsed.length > 0 && parsed[parsed.length - 1].role === "user") {
+            setLoading(true);
+          } else {
+            setLoading(false);
+          }
+        } catch (e) {}
+      }
+    };
+
+    loadData();
+    // Poll every second to catch background fetch completions if user navigated away and back
+    const interval = setInterval(loadData, 1000);
+    return () => clearInterval(interval);
   }, [id]);
 
   useEffect(() => {
@@ -76,11 +94,16 @@ export default function ChatPage({ params }: { params: Promise<{ id: string }> }
       if (!response.ok) throw new Error("Failed to fetch response");
       
       const data = await response.json();
+      const finalMessages: Message[] = [...newMessages, { role: "assistant", content: data.response }];
       
-      setMessages([...newMessages, { role: "assistant", content: data.response }]);
+      // Force save to localStorage instantly so it's not lost if user navigated away
+      localStorage.setItem(`chat_${id}`, JSON.stringify(finalMessages));
+      setMessages(finalMessages);
     } catch (error) {
       console.error(error);
-      setMessages([...newMessages, { role: "assistant", content: "ERROR: Connection failed. The backend might be sleeping or the LLM is broken." }]);
+      const errorMessages: Message[] = [...newMessages, { role: "assistant", content: "ERROR: Connection failed. The backend might be sleeping or the LLM is broken." }];
+      localStorage.setItem(`chat_${id}`, JSON.stringify(errorMessages));
+      setMessages(errorMessages);
     } finally {
       setLoading(false);
     }
@@ -161,7 +184,6 @@ export default function ChatPage({ params }: { params: Promise<{ id: string }> }
           onChange={(e) => setInput(e.target.value)}
           placeholder="Type your message..."
           className="flex-1 brutal-border brutal-shadow-sm p-3 md:p-4 text-base md:text-xl font-bold focus:outline-none focus:bg-gray-100 placeholder-gray-500"
-          disabled={loading}
         />
         <button 
           type="submit"
