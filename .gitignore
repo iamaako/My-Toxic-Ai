@@ -1,0 +1,32 @@
+# Ignore the user's specific text files
+oldmainpy.txt
+ideaa.txt
+ACTUAL_SETUP.md
+DEPLOYMENT_GUIDE.md
+DIGITAL_OCEAN_SETUP.md
+*.md
+!README.md
+ss/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+backend/venv/
+backend/env/
+venv/
+env/
+ENV/
+
+# OS
+.DS_Store
+*.pem
+
+# IDE
+.vscode/
+.idea/
+
+# Logs
+*.log

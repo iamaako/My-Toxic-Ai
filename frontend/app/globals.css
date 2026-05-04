@@ -1,0 +1,42 @@
+@import "tailwindcss";
+
+:root {
+  --background: #fefce8;
+  --foreground: #000000;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-space-grotesk);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), sans-serif;
+}
+
+@layer utilities {
+  .brutal-border {
+    @apply border-4 border-black;
+  }
+  .brutal-border-b {
+    @apply border-b-4 border-black;
+  }
+  .brutal-shadow {
+    @apply shadow-[8px_8px_0px_0px_rgba(0,0,0,1)];
+  }
+  .brutal-shadow-sm {
+    @apply shadow-[4px_4px_0px_0px_rgba(0,0,0,1)];
+  }
+  .brutal-shadow-lg {
+    @apply shadow-[12px_12px_0px_0px_rgba(0,0,0,1)];
+  }
+  .brutal-btn {
+    @apply border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] transition-transform active:translate-x-1 active:translate-y-1 active:shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] hover:-translate-y-0.5 hover:-translate-x-0.5 hover:shadow-[10px_10px_0px_0px_rgba(0,0,0,1)];
+  }
+  .brutal-card {
+    @apply border-4 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] transition-transform hover:-translate-y-1 hover:-translate-x-1 hover:shadow-[12px_12px_0px_0px_rgba(0,0,0,1)];
+  }
+}
