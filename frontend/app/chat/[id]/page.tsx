@@ -63,7 +63,7 @@ export default function ChatPage({ params }: { params: Promise<{ id: string }> }
     setLoading(true);
 
     try {
-      const response = await fetch("http://165.22.214.38:8000/api/chat", {
+      const response = await fetch("http://168.144.91.250:8000/api/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({

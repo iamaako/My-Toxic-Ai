@@ -5,6 +5,7 @@
 </div>
 
 ### Team: Lone Wolf
+🔗 **Live Demo:** [https://my-toxic-ai.netlify.app](https://my-toxic-ai.netlify.app)
 
 Welcome to the most unhelpful, stressful, and chaotic AI companion app you'll ever use. **My Toxic AI** was built for the Garage Inference Hackathon to answer one question: *What if we stopped trying to fix the hardware limitations of small, weak local models and instead weaponized them into personality traits?*
 
