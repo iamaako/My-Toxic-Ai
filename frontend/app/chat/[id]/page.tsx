@@ -87,7 +87,9 @@ export default function ChatPage({ params }: { params: Promise<{ id: string }> }
   };
 
   return (
-    <div className="flex flex-col h-screen w-full">
+    <div className="flex items-center justify-center min-h-screen w-full bg-yellow-50 md:p-6 lg:p-8 relative">
+      {/* Centered Chat Container */}
+      <div className="flex flex-col h-screen md:h-[90vh] w-full max-w-4xl bg-white md:brutal-border md:brutal-shadow overflow-hidden relative z-10">
       {/* Header */}
       <header className="flex justify-between items-center p-4 md:p-6 gap-2 md:gap-4 flex-wrap bg-[#fefce8] border-b-4 border-black">
         <Link 
@@ -169,6 +171,7 @@ export default function ChatPage({ params }: { params: Promise<{ id: string }> }
           Send
         </button>
       </form>
+      </div>
     </div>
   );
 }
